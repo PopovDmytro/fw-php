@@ -1,18 +1,36 @@
 <?php
+
+error_reporting(-1);
+
+use vendor\core\Router;
+
 require_once '../vendor/libs/functions.php';
 
-require_once '../vendor/core/Router.php';
+//require_once '../vendor/core/Router.php';
+
+define('WWW', __DIR__);
+define('ROOT', dirname(__DIR__));
+define('CORE', ROOT . '/vendor/core');
+define('APP', ROOT . '/app');
+define('LAYOUT', 'default');
+
+//require_once '../app/controllers/Main.php';
+//require_once '../app/controllers/Posts.php';
+//require_once '../app/controllers/PostsNew.php';
+spl_autoload_register(function ($class){
+    $file = ROOT . '/' . str_replace('\\', '/', $class) . '.php';
+    if(is_file($file)){
+        require_once $file;
+    }
+});
 
 $query = rtrim($_SERVER['QUERY_STRING'], '/');
 
-Router::add('posts/add', ['controller' => 'Posts', 'action' => 'add']);
-Router::add('posts', ['controller' => 'Posts', 'action' => 'index']);
-Router::add('', ['controller' => 'Main', 'action' => 'index']);
+//custom root
+//Router::add('^page/(?P<action>[a-z-]+)/(?P<alias>[a-z-]+)$', ['controller' => 'Page']);
+Router::add('^page/(?P<alias>[a-z-]+)$', ['controller' => 'Page', 'action' => 'view']);
+//default roots
+Router::add('^$', ['controller' => 'Main', 'action' => 'index']);
+Router::add('^(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$');
 
-debug(Router::getRoutes());
-
-if (Router::matchRoute($query)) {
-    debug(Router::getRoute());
-} else {
-    echo "error 404";
-}
+Router::dispatch($query);
