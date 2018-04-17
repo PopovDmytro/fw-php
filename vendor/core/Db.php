@@ -6,6 +6,6 @@ namespace vendor\core;
 class Db
 {
 
-    
+
 
 }
