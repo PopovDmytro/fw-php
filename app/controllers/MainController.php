@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Main;
+
 class MainController extends AppController
 {
 
@@ -12,14 +14,11 @@ class MainController extends AppController
 //        $this->layout = 'main';
 //        $this->view = 'test';
 
-        $name = 'Dmytro';
-        $hi = 'Hello';
-        $colors = [
-            'white' => 'white',
-            'black' => 'black'
-        ];
+        $model = new Main;
+        $res = $model->query("CREATE TABLE posts2 SELECT * FROM fw_php.post");
+        $posts = $model->findAll();
+        $posts2 = $model->findAll();
         $title = "PAGE TILE";
-
-        $this->set(compact('name', 'hi', 'colors', 'title'));
+        $this->set(compact('title', 'posts'));
     }
 }
