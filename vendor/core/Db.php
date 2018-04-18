@@ -27,18 +27,18 @@ class Db
         return self::$instance;
     }
 
-    function execute($sql) {
+    function execute($sql, $params = []) {
         self::$countSql++;
         self::$queries[] = $sql;
         $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute();
+        return $stmt->execute($params);
     }
 
-    function query($sql) {
+    function query($sql, $params = []) {
         self::$countSql++;
         self::$queries[] = $sql;
         $stmt = $this->pdo->prepare($sql);
-        $res = $stmt->execute();
+        $res = $stmt->execute($params);
         if($res !== false) {
             return $stmt->fetchAll();
 
