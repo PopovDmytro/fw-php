@@ -5,6 +5,12 @@ namespace app\controllers;
 class PageController extends AppController
 {
     function viewAction() {
-        echo 'Page::view';
+        $menu = $this->menu;
+        $title = "PAGE";
+        $this->set(compact('title', 'posts', 'menu'));
+    }
+
+    function testAction() {
+
     }
 }

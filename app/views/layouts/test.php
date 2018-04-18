@@ -7,25 +7,15 @@
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" >
     <link rel="stylesheet" href="/css/default.css" >
 
-    <title>Default | <?php echo $meta['title'];?></title>
-    <meta name="description" content="<?php echo $meta['content'];?>">
-    <meta name="keywords" content="<?php echo $meta['keywords'];?>">
+    <title>Default | <?php echo $title;?></title>
 
 </head>
 <body>
 
-<?php if(!empty($menu)):?>
-<hr>
-    <ul class="nav">
-        <?php foreach ($menu as $item):?>
-            <li class="nav-item"><a class="nav-link" href="category/<?php echo $item['id']?>"><?php echo $item['title']?></a></li>
-        <?php endforeach;?>
-    </ul>
-<hr>
-<?php endif;?>
+<h3>Page without menu</h3>
 
 <div class="container">
-    <h1>Hello, DEFAULT!</h1>
+    <h1>Hello, TEST!</h1>
     <?php echo $content;?>
     <?php //echo debug(vendor\core\Db::$countSql);?>
     <?php //echo debug(vendor\core\Db::$queries);?>

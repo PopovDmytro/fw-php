@@ -1,4 +1,4 @@
-<code> <?php echo __FILE__;?> </code>
+<!--<code> --><?php //echo __FILE__;?><!-- </code>-->
 <div class="container">
     <div class="row">
     <?php if(!empty($posts)):?>

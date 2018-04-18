@@ -11,8 +11,10 @@ require_once '../vendor/libs/functions.php';
 define('WWW', __DIR__);
 define('ROOT', dirname(__DIR__));
 define('CORE', ROOT . '/vendor/core');
+define('LIBS', ROOT . '/vendor/libs');
 define('APP', ROOT . '/app');
 define('LAYOUT', 'default');
+
 
 //require_once '../app/controllers/Main.php';
 //require_once '../app/controllers/Posts.php';
