@@ -13,6 +13,7 @@ define('ROOT', dirname(__DIR__));
 define('CORE', ROOT . '/vendor/core');
 define('LIBS', ROOT . '/vendor/libs');
 define('APP', ROOT . '/app');
+define('CACHE', ROOT . '/tmp/cache');
 define('LAYOUT', 'default');
 
 
@@ -26,6 +27,8 @@ spl_autoload_register(function ($class){
     }
 });
 
+new \vendor\core\App;
+
 $query = rtrim($_SERVER['QUERY_STRING'], '/');
 
 //custom root
@@ -36,3 +39,4 @@ Router::add('^$', ['controller' => 'Main', 'action' => 'index']);
 Router::add('^(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$');
 
 Router::dispatch($query);
+

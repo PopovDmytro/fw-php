@@ -22,5 +22,14 @@ abstract class Controller
     function set($vars) {
         $this->vars = $vars;
     }
+
+    function isAjax() {
+        return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
+    }
+
+    function loadView($view, $vars = []) {
+        extract($vars);
+        require APP . "/views/{$this->route['controller']}/{$view}.php";
+    }
 }
 

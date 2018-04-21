@@ -1,5 +1,6 @@
 <!--<code> --><?php //echo __FILE__;?><!-- </code>-->
-<div class="container">
+<div class="container" id="container">
+    <button type="button" class="btn btn-default" id="send">BUTTON</button>
     <div class="row">
     <?php if(!empty($posts)):?>
         <?php foreach ($posts as $post):?>
@@ -13,3 +14,21 @@
     <?php endif;?>
     </div>
 </div>
+
+<script>
+    $(function () {
+        $('#send').on('click', function () {
+            $.ajax({
+                type: 'POST',
+                url: '/main/test',
+                data: {'id' : 2},
+                success: function (res) {
+                    $('#container').append(res);
+                },
+                error: function () {
+                    alert('Error ajax!');
+                }
+            });
+        });
+    });
+</script>
