@@ -1,12 +1,12 @@
 <?php
 
-error_reporting(-1);
-
 use vendor\core\Router;
 
 require_once '../vendor/libs/functions.php';
 
 //require_once '../vendor/core/Router.php';
+
+define('DEBUG', 1);
 
 define('WWW', __DIR__);
 define('ROOT', dirname(__DIR__));
@@ -15,7 +15,6 @@ define('LIBS', ROOT . '/vendor/libs');
 define('APP', ROOT . '/app');
 define('CACHE', ROOT . '/tmp/cache');
 define('LAYOUT', 'default');
-
 
 //require_once '../app/controllers/Main.php';
 //require_once '../app/controllers/Posts.php';
