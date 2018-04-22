@@ -33,6 +33,8 @@ class MainController extends AppController
     function testAction(){
         if($this->isAjax()) {
             $model = new Main;
+//            $data = ['answer' => 'Server answer', 'code' => 200];
+//            echo json_encode($data);
             $post = \R::findOne('post', "id = {$_POST['id']}");
             $this->loadView('_test', compact('post'));
             die;
