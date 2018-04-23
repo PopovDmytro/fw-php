@@ -12,33 +12,18 @@
 </head>
 <body>
 
-<hr>
-<ul class="nav">
-    <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="page/about">About</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/admin">Admin</a>
-    </li>
-</ul>
-<hr>
-
-
 <?php if(!empty($menu)):?>
-<hr>
+    <hr>
     <ul class="nav">
         <?php foreach ($menu as $item):?>
             <li class="nav-item"><a class="nav-link" href="category/<?php echo $item['id']?>"><?php echo $item['title']?></a></li>
         <?php endforeach;?>
     </ul>
-<hr>
+    <hr>
 <?php endif;?>
 
 <div class="container">
-    <h1>Hello, DEFAULT!</h1>
+    <h1>Admin index!</h1>
     <?php echo $content;?>
     <?php //echo debug(vendor\core\Db::$countSql);?>
     <?php //echo debug(vendor\core\Db::$queries);?>

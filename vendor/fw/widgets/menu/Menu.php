@@ -1,8 +1,8 @@
 <?php
 
-namespace vendor\widgets\Menu;
+namespace fw\widgets\Menu;
 
-use vendor\libs\Cache;
+use fw\libs\Cache;
 
 class Menu
 {

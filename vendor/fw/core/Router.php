@@ -1,6 +1,6 @@
 <?php
 
-namespace vendor\core;
+namespace fw\core;
 
 class Router
 {
@@ -30,6 +30,12 @@ class Router
                 if(!isset($route['action'])){
                     $route['action'] = 'index';
                 }
+                //prefix for admin controllers
+                if(!isset($route['prefix'])) {
+                    $route['prefix'] = '';
+                } else {
+                    $route['prefix'] .= '\\';
+                }
                 $route['controller'] = self::upperCamelCase($route['controller']);
                 self::$route = $route;
                 return true;
@@ -41,7 +47,7 @@ class Router
     static function dispatch($url){
         $url = self::removeQueryString($url);
         if(self::matchRoute($url)){
-            $controller = 'app\controllers\\' . self::$route['controller'] . 'Controller';
+            $controller = 'app\controllers\\' . self::$route['prefix'] . self::$route['controller'] . 'Controller';
             if(class_exists($controller)){
                 $cObj = new $controller(self::$route);
                 $action = self::lowerCamelCase(self::$route['action']) . 'Action';

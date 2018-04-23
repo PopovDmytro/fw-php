@@ -1,6 +1,6 @@
 <?php
 
-namespace vendor\core;
+namespace fw\core;
 
 class ErrorHandler
 {
@@ -46,7 +46,7 @@ class ErrorHandler
 
     protected function displayError($errno, $errstr, $errfile, $errline, $response = 500) {
         http_response_code($response);
-        if($response == 404) {
+        if($response == 404 && !DEBUG) {
             require WWW . '/errors/404.html';
             die;
         }

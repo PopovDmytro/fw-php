@@ -1,6 +1,6 @@
 <!--<code> --><?php //echo __FILE__;?><!-- </code>-->
 <hr>
-<?php new \vendor\widgets\Menu\Menu([
+<?php new \fw\widgets\Menu\Menu([
 //        'tpl' => WWW . '/menu/my_menu.php',
         'tpl' => WWW . '/menu/select.php',
         'container' => 'select',
@@ -11,7 +11,7 @@
 ]);?>
 <hr>
 
-<?php new \vendor\widgets\Menu\Menu([
+<?php new \fw\widgets\Menu\Menu([
         'tpl' => WWW . '/menu/my_menu.php',
         'container' => 'ul',
         'class' => 'my_menu',
