@@ -10,6 +10,7 @@ class App
     public static $app;
 
     function __construct() {
+        session_start();
         self::$app = Registry::instance();
         new ErrorHandler();
     }

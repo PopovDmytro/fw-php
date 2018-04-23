@@ -23,6 +23,15 @@
     <li class="nav-item">
         <a class="nav-link" href="/admin">Admin</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/user/signup">Sign up</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/user/login">Login</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/user/logout">Logout</a>
+    </li>
 </ul>
 <hr>
 
@@ -39,6 +48,19 @@
 
 <div class="container">
     <h1>Hello, DEFAULT!</h1>
+
+    <?php if(isset($_SESSION['error'])):?>
+        <div class="alert alert-danger">
+            <?php echo $_SESSION['error']; unset($_SESSION['error'])?>
+        </div>
+    <?php endif;?>
+
+    <?php if(isset($_SESSION['success'])):?>
+        <div class="alert alert-success">
+            <?php echo $_SESSION['success']; unset($_SESSION['success'])?>
+        </div>
+    <?php endif;?>
+
     <?php echo $content;?>
     <?php //echo debug(vendor\core\Db::$countSql);?>
     <?php //echo debug(vendor\core\Db::$queries);?>

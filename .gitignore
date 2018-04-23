@@ -19,4 +19,9 @@ node_modules
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-/vendor/
+
+# ignore composer packages
+/vendor/*
+!/vendor/fw
+
+
