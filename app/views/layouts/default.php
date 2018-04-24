@@ -61,6 +61,8 @@
         </div>
     <?php endif;?>
 
+    <?php debug($_SESSION)?>
+
     <?php echo $content;?>
     <?php //echo debug(vendor\core\Db::$countSql);?>
     <?php //echo debug(vendor\core\Db::$queries);?>

@@ -31,10 +31,22 @@ class UserController extends AppController
     }
 
     function loginAction() {
-
+        if(!empty($_POST)){
+            $user = new User();
+            if($user->login()){
+                $_SESSION['success'] = "You are success logined";
+            } else {
+                $_SESSION['error'] = "login ! password incorrect";
+                redirect();
+            }
+        }
+        View::setMeta("Enter");
     }
 
     function logoutAction() {
-
+        if(isset($_SESSION['user'])){
+            unset($_SESSION['user']);
+        }
+        redirect('/user/login');
     }
 }
