@@ -51,8 +51,8 @@ class View
             extract($vars);
         }
         $file_view = APP . "/views/{$this->route['prefix']}{$this->route['controller']}/{$this->view}.php";
-//        ob_start([$this, 'compressPage']);
-        ob_start('ob_gzhandler');
+        ob_start([$this, 'compressPage']);
+//        ob_start('ob_gzhandler');
 //        header("Content-Encoding: gzip");
         if(is_file($file_view)){
             require $file_view;

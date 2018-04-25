@@ -11,14 +11,14 @@
 ]);?>
 <hr>
 
-<?php new \fw\widgets\Menu\Menu([
+<?php /*new \fw\widgets\Menu\Menu([
         'tpl' => WWW . '/menu/my_menu.php',
         'container' => 'ul',
         'class' => 'my_menu',
         'table' => 'categories',
         'cache' => 3600,
         'cache_key' => 'menu_ul'
-]);?>
+]);*/?>
 <hr>
 
 <div class="container" id="container">
@@ -33,6 +33,13 @@
                 </div>
             </div>
         <?php  endforeach; ?>
+
+        <div class="text-center">
+            <h3>Posts: <?php echo count($posts);?> of <?php echo $total;?></h3>
+            <?php if($pagination->countPages > 1):?>
+                <?php echo $pagination;?>
+            <?php endif;?>
+        </div>
     <?php endif;?>
     </div>
 </div>

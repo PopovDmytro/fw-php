@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Main;
 use fw\core\App;
 use fw\core\base\View;
+use fw\libs\Pagination;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -30,20 +31,28 @@ class MainController extends AppController
 
         $model = new Main;
 //        \R::fancyDebug(true);
-        $posts = \R::findAll('posts');
-        App::$app->cache->set('posts', $posts, 3600 * 24);
+
+//        pagination
+        $total = \R::count('post');
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $perpage = 2;
+        $pagination = new Pagination($page, $perpage, $total);
+        $start = $pagination->getStart();
+//
+        $posts = \R::findAll('post', "LIMIT $start, $perpage");
+//        App::$app->cache->set('posts', $posts, 3600 * 24);
 //        $posts = App::$app->cache->get('posts');
 //        if(!$posts) {
 //            $posts = \R::findAll('posts');
 //            App::$app->cache->set('posts', $posts, 3600 * 24);
 //        }
-        $post = \R::findOne('posts', 'id = 1');
+//        $post = \R::findOne('posts', 'id = 1');
         $menu = $this->menu;
         $title = "PAGE TILE";
 //        $this->setMeta('Main Page', 'Description page', 'Key Words');
 //        $meta = $this->meta;
         View::setMeta('Main Page', 'Description page', 'Key Words');
-        $this->set(compact('title', 'posts', 'menu', 'meta'));
+        $this->set(compact('title', 'posts', 'menu', 'meta', 'pagination', 'total'));
     }
 
     function testAction(){
